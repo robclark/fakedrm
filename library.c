@@ -73,7 +73,7 @@ PUBLIC int open(const char *pathname, int flags, ...)
 	VERBOSE_MSG("%s(pathname = '%s', flags = %d, mode = %x)",
 		__func__, pathname, flags, mode);
 
-	if (!strcmp(pathname, "/dev/dri/card0"))
+	if (strstr(pathname, "/dev/dri/") == pathname)
 		return file_open(pathname, flags, mode);
 
 	if (strstr(pathname, "/dev/tty") || strstr(pathname, "/dev/vc/"))
